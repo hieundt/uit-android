@@ -28,7 +28,7 @@
         <activity android:name=".login.ui.LoginActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="LOGIN_ACT" />
+                <action android:name="android.intent.action.LOGIN" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

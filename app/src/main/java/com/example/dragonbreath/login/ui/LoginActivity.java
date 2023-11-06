@@ -20,8 +20,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dragonbreath.LocalStorage;
+import com.example.dragonbreath.MainActivity;
 import com.example.dragonbreath.R;
 import com.example.dragonbreath.databinding.ActivityLoginBinding;
 import com.example.dragonbreath.databinding.ActivityMainBinding;
@@ -43,14 +45,14 @@ public class LoginActivity extends AppCompatActivity {
         sharedPreferences = LocalStorage.getInstance(this);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         loginBtn = binding.login;
         usernameEditText = binding.username;
         passwordEditText = binding.password;
-
-        Intent intent = getIntent();
 
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
@@ -60,13 +62,13 @@ public class LoginActivity extends AppCompatActivity {
                 String username = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
 
-                loginViewModel.login(username, password).observe(getViewLifecycleOwner(), new Observer<AccessTokenResponse>() {
+                loginViewModel.login(username, password).observe(LoginActivity.this, new Observer<AccessTokenResponse>() {
                     @Override
                     public void onChanged(AccessTokenResponse response) {
                         if (response != null) {
-                            editor.putString("access_token", "your_access_token_here");
+                            editor.putString("access_token", response.accessToken);
                             editor.apply();
-
+                            startActivity(intent);
                         } else {
                         }
                     }

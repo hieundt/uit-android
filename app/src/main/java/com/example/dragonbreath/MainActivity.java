@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.dragonbreath.login.ui.LoginActivity;
 import com.example.dragonbreath.profile.ui.ProfileViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -18,6 +19,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.dragonbreath.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
+    SharedPreferences sharedPreferences;
     private ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,16 +28,15 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Intent intent = new Intent("LOGIN_ACT");
-
-                if (accessToken != null) {
-            Toast.makeText(MainActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
+        //Intent intent = new Intent("LOGIN_ACT");
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        sharedPreferences = LocalStorage.getInstance(this);
+        String accessToken = sharedPreferences.getString("access_token", null);
+        if (accessToken != null) {
+            Toast.makeText(this, "Welcome", Toast.LENGTH_SHORT).show();
         } else {
-                    startActivity(intent);
-           // navController.navigate(R.id.navigation_login);
+            startActivity(intent);
         }
-
-
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -44,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-
-
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
     }

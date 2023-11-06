@@ -36,20 +36,20 @@ public class HomeFragment extends Fragment {
         return binding.getRoot();
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        Context context = getContext();
-        sharedPreferences = LocalStorage.getInstance(context);
-        String accessToken = sharedPreferences.getString("access_token", null);
-
-        NavController navController = Navigation.findNavController(view);
-        if (accessToken != null) {
-            Toast.makeText(context, "Welcome", Toast.LENGTH_SHORT).show();
-        } else {
-            navController.navigate(R.id.navigation_login);
-        }
-    }
+//    @Override
+//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+//        super.onViewCreated(view, savedInstanceState);
+//        Context context = getContext();
+//        sharedPreferences = LocalStorage.getInstance(context);
+//        String accessToken = sharedPreferences.getString("access_token", null);
+//
+//        NavController navController = Navigation.findNavController(view);
+//        if (accessToken != null) {
+//            Toast.makeText(context, "Welcome", Toast.LENGTH_SHORT).show();
+//        } else {
+//            navController.navigate(R.id.navigation_login);
+//        }
+//    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();
