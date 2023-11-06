@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.dragonbreath.databinding.FragmentDashboardBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DashboardFragment extends Fragment {
 
@@ -24,8 +25,9 @@ public class DashboardFragment extends Fragment {
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textDashboard;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final BottomNavigationView textView = binding.botNav;
+        dashboardViewModel.getText().observe(getViewLifecycleOwner(),
+                textView::setText);
         return root;
     }
 

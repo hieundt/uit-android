@@ -4,7 +4,328 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/average"
     tools:context=".home.HomeFragment">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top_bg" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/butMenu"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="Menu Button"
+        android:background="@drawable/menu_button" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/butSearch"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="Search Button"
+        android:background="@drawable/search_button" />
+
+    <TextView
+        android:id="@+id/texHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32.5dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Home"
+        android:textColor="@color/chart_primary"
+        android:textSize="25sp" />
+
+    <!--    Main board-->
+    <RelativeLayout
+        android:id="@+id/MainBoard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/butMenu"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/main_board"
+        android:elevation="1dp"
+        android:padding="16dp"
+        android:translationZ="8dp">
+
+        <TextView
+            android:id="@+id/texTotalDevice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:fontFamily="sans-serif-black"
+            android:text="Asset name"
+            android:textColor="@color/neutral3"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/texNumberic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/texTotalDevice"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/neutral2"
+            android:textSize="24sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/butAddDevice"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="2dp"
+            android:contentDescription="Add Device Button"
+            android:background="@drawable/info_button" />
+
+        <View
+            android:id="@+id/Divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/butAddDevice"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="8dp"
+            android:background="@color/neutral3" />
+
+        <TextView
+            android:id="@+id/texApplianceList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Divider"
+            android:layout_alignTop="@id/Divider"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="12dp"
+            android:letterSpacing="0.01"
+            android:text="Asset information"
+            android:textColor="@color/neutral3"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/texTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/texApplianceList"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/temp"
+            android:drawablePadding="4dp"
+            android:text="Temperature"
+            android:textColor="@color/neutral2"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/texHumidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/texApplianceList"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/baseline_air_24"
+            android:drawablePadding="4dp"
+            android:text="Air"
+            android:textColor="@color/neutral2"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/texAir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/texApplianceList"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/baseline_water_drop_24"
+            android:drawablePadding="4dp"
+            android:text="Moisture"
+            android:textColor="@color/neutral2"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/texTempInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/texTemp"
+            android:layout_alignStart="@id/texTemp"
+            android:paddingStart="24dp"
+            android:textColor="@color/neutral1"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/texHumidityInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/texAir"
+            android:layout_alignBaseline="@id/texTempInfo"
+            android:layout_alignStart="@id/texAir"
+            android:paddingStart="24dp"
+            android:textColor="@color/neutral1"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/texAirInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/texAir"
+            android:layout_alignStart="@id/texHumidity"
+            android:paddingStart="24dp"
+            android:textColor="@color/neutral1"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+    <!--    Weekly - Monthly - Annual-->
+    <TableLayout
+        android:id="@+id/RoutineBar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/MainBoard"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="8dp"
+        android:background="@drawable/routine_bar"
+        android:elevation="2dp"
+        android:paddingVertical="8dp"
+        android:stretchColumns="*"
+        android:translationZ="8dp">
+
+        <TableRow>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/butWeekly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-20dp"
+                android:background="@color/neutral6"
+                android:drawableBottom="@drawable/baseline_brightness_1_24"
+                android:drawablePadding="-20dp"
+                android:text="Weekly"
+                android:textAllCaps="false"
+                android:textColor="@color/neutral1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/butMonthly"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-20dp"
+                android:background="@color/neutral6"
+                android:drawableBottom="@drawable/baseline_brightness_1_24"
+                android:drawablePadding="-19dp"
+                android:text="Monthly"
+                android:textAllCaps="false"
+                android:textColor="@color/neutral1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/butAnnual"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-20dp"
+                android:background="@color/neutral6"
+                android:drawableBottom="@drawable/baseline_brightness_1_24"
+                android:drawablePadding="-20dp"
+                android:text="Annual"
+                android:textAllCaps="false"
+                android:textColor="@color/neutral1" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/texAnalysis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/RoutineBar"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="12dp"
+        android:text="Analysis"
+        android:textColor="@color/neutral1"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="200dp"
+        android:layout_height="28dp"
+        android:layout_below="@id/RoutineBar"
+        android:layout_alignParentEnd="true"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/custom_spinner" />
+    <!--   Analysis -->
+    <LinearLayout
+        android:id="@+id/ChartTemp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/texAnalysis"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/main_board"
+        android:elevation="2dp"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:translationZ="8dp">
+
+        <TextView
+            android:id="@+id/texTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/texApplianceList"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:drawableStart="@drawable/temp"
+            android:drawablePadding="4dp"
+            android:text="Temperature"
+            android:textColor="@color/neutral3"
+            android:textSize="14sp" />
+
+        <!--        Chart-->
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart1"
+            android:layout_width="match_parent"
+            android:layout_height="190dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+                android:id="@+id/texAverageHome"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="12dp"
+                android:text="Average"
+                android:textColor="@color/neutral1"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/texAverageValue"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="12dp"
+                android:layout_weight="4"
+                android:textColor="@color/neutral1"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/texLastUpdated"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/neutral1"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
+

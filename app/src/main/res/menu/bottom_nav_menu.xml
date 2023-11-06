@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/home_svgrepo_com"
         android:title="@string/title_home" />
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
+        android:id="@+id/navigation_device"
+        android:icon="@drawable/device_activating_svgrepo_com"
+        android:title="Device" />
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+        android:id="@+id/navigation_map"
+        android:icon="@drawable/map_svgrepo_com"
+        android:title="Map" />
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/baseline_account_circle_24"
+        android:icon="@drawable/profile_svgrepo_com"
         android:title="@string/title_profile"/>
 </menu>
