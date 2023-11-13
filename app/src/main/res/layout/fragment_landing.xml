@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LandingFragment">
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:scaleType="centerCrop"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/landing_bg"/>
+        <TextView
+            android:id="@+id/landing_title"
+            android:layout_alignParentTop="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:paddingHorizontal="30dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="62dp"
+            android:text="The best app for your health"/>
+
+        <Button
+            android:id="@+id/btn_landing_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="80dp"
+            android:text="@string/action_sign_in"
+            android:layout_above="@+id/btn_landing_register" />
+
+        <TextView
+            android:id="@+id/btn_landing_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="200dp"
+            android:clickable="true"
+            android:text="Create an account"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+</RelativeLayout>

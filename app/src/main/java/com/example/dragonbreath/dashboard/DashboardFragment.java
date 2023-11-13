@@ -25,9 +25,9 @@ public class DashboardFragment extends Fragment {
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final BottomNavigationView textView = binding.botNav;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(),
-                textView::setText);
+//        final BottomNavigationView textView = binding.botNav;
+//        dashboardViewModel.getText().observe(getViewLifecycleOwner(),
+//                textView::setText);
         return root;
     }
 

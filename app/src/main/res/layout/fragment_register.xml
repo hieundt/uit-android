@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".register.ui.RegisterFragment">
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/register"
+        android:gravity="center"
+        android:textColor="#4b784e"
+        android:textSize="40sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/txt_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_title"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:text="@string/create_your_new_account"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_register"
+        android:layout_below="@+id/txt_description"
+        android:layout_marginHorizontal="30dp"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/baseline_person_24"
+            android:drawablePadding="15dp"
+            android:hint="Username"
+            android:importantForAutofill="no"
+            android:padding="13dp"
+            android:textSize="21sp" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:drawableStart="@drawable/baseline_email_24"
+            android:drawablePadding="15dp"
+            android:hint="example@mail.com"
+            android:importantForAutofill="no"
+            android:padding="13dp"
+            android:textSize="21sp" />
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mail"
+            android:layout_marginTop="15dp"
+            android:drawableStart="@drawable/baseline_lock_24"
+            android:drawablePadding="15dp"
+            android:hint="Password"
+            android:importantForAutofill="no"
+            android:padding="13dp"
+            android:textSize="21sp"
+            android:inputType="textPassword"/>
+        <EditText
+            android:id="@+id/confirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pass"
+            android:layout_marginTop="15dp"
+            android:drawableStart="@drawable/baseline_lock_24"
+            android:drawablePadding="15dp"
+            android:hint="Confirm Password"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:padding="13dp"
+            android:textColor="#4b784e"
+            android:textColorHint="#4b784e"
+            android:textSize="21sp" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/login_option_label"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="50dp"
+        android:textSize="20dp"
+        android:text="Register"
+        android:backgroundTint="#4b784e"
+        android:padding="13dp" />
+    <LinearLayout
+        android:id="@+id/login_option_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Are you a member? "
+        android:textSize="20dp" />
+    <!--        Wrap with a container for clickable-->
+    <LinearLayout
+        android:id="@+id/login_option"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Login"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
+

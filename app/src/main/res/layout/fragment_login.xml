@@ -8,7 +8,7 @@
     android:paddingTop="@dimen/fragment_vertical_margin"
     android:paddingRight="@dimen/fragment_horizontal_margin"
     android:paddingBottom="@dimen/fragment_vertical_margin"
-    android:background="@drawable/bgregis"
+    android:background="@drawable/auth_bg"
     tools:context=".login.ui.LoginFragment">
 
        <TextView
@@ -20,7 +20,8 @@
            android:textAlignment="center"
            android:text="@string/welcome"
            android:textColor="#4b784e"
-           android:textSize="33sp" />
+           android:textSize="40sp"
+           android:textStyle="bold"/>
 
     <EditText
         android:id="@+id/username"
@@ -48,14 +49,46 @@
         android:selectAllOnFocus="true"
         android:layout_below="@+id/username"/>
 
-
     <Button
-        android:id="@+id/login"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/register_option_label"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
         android:enabled="true"
         android:text="@string/action_sign_in"
-        android:layout_centerHorizontal="true"
+        android:backgroundTint="#4b784e"
+        android:layout_centerHorizontal="true"/>
+
+    <LinearLayout
+        android:id="@+id/register_option_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="100dp"/>
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="New to Dragon Breath? "
+            android:textSize="20dp" />
+
+<!--        Wrap with a container for clickable-->
+        <LinearLayout
+            android:id="@+id/register_option"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Register"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>

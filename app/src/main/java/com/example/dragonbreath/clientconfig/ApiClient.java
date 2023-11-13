@@ -19,8 +19,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
-    private static Retrofit retrofit;
-    private static OkHttpClient getUnsafeOkHttpClient() {
+    private static Retrofit retrofit = null;
+    private static <SSLSocketFactory>OkHttpClient getUnsafeOkHttpClient() {
         try {
             // Create a trust manager that does not validate certificate chains
             final TrustManager[] trustAllCerts = new TrustManager[] {
@@ -41,37 +41,51 @@ public class ApiClient {
             };
             final SSLContext sslContext = SSLContext.getInstance("SSL");
             sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+
             // Create an ssl socket factory with our all-trusting manager
-            final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
+            final SSLSocketFactory sslSocketFactory = (SSLSocketFactory) sslContext.getSocketFactory();
 
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
-
-            //Log
-            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-            builder.addInterceptor(interceptor);
-
-            //Bear token
-            builder.addInterceptor(new Interceptor() {
-                @Override
-                public Response intercept(Chain chain) throws IOException {
-                    Request newRequest  = chain.request().newBuilder()
-//                            .addHeader("Authorization", "Bearer " + token)
-                            .build();
-                    return chain.proceed(newRequest);
-                }
-            });
-
-
-            builder.sslSocketFactory(sslSocketFactory, (X509TrustManager)trustAllCerts[0]);
+            builder.sslSocketFactory((javax.net.ssl.SSLSocketFactory) sslSocketFactory, (X509TrustManager)trustAllCerts[0]);
             builder.hostnameVerifier(new HostnameVerifier() {
                 @Override
-                public boolean verify(String hostname, SSLSession session) {
+                public boolean verify(String hostname, SSLSession sslSession) {
                     return true;
                 }
             });
+
             OkHttpClient okHttpClient = builder.build();
             return okHttpClient;
+//            final SSLContext sslContext = SSLContext.getInstance("SSL");
+//            sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+//            // Create an ssl socket factory with our all-trusting manager
+//            final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
+//
+//            OkHttpClient.Builder builder = new OkHttpClient.Builder();
+//            //Log
+//            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+//            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+//            builder.addInterceptor(interceptor);
+//
+//            //Bear token
+//            builder.addInterceptor(new Interceptor() {
+//                @Override
+//                public Response intercept(Chain chain) throws IOException {
+//                    Request newRequest  = chain.request().newBuilder()
+////                            .addHeader("Authorization", "Bearer " + token)
+//                            .build();
+//                    return chain.proceed(newRequest);
+//                }
+//            });
+//            builder.sslSocketFactory(sslSocketFactory, (X509TrustManager)trustAllCerts[0]);
+//            builder.hostnameVerifier(new HostnameVerifier() {
+//                @Override
+//                public boolean verify(String hostname, SSLSession session) {
+//                    return true;
+//                }
+//            });
+//            OkHttpClient okHttpClient = builder.build();
+//            return okHttpClient;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
