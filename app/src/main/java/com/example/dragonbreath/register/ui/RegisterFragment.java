@@ -50,13 +50,14 @@ public class RegisterFragment extends Fragment {
                 String email = emailEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
                 String confirmPassword = confirmPasswordEditText.getText().toString();
+
                 Bundle bundle = new Bundle();
                 bundle.putString("username", username);
                 bundle.putString("email", email);
                 bundle.putString("password", password);
                 bundle.putString("confirmPassword", confirmPassword);
-
                 loading.putExtra("register", bundle);
+
                 startActivity(loading);
 //                if (validateRegistration(username,email,password,confirmPassword)) {
 //                    Bundle bundle = new Bundle();
