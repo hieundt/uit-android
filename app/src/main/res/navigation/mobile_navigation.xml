@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/navigation_login"
         android:name="com.example.dragonbreath.login.ui.LoginFragment"
-        android:label="@string/sign_in_title"
+        android:label="@string/log_in"
         tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/navigation_home"

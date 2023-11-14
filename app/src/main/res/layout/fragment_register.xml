@@ -2,6 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="@dimen/fragment_horizontal_margin"
+    android:paddingTop="@dimen/fragment_vertical_margin"
+    android:paddingRight="@dimen/fragment_horizontal_margin"
+    android:paddingBottom="@dimen/fragment_vertical_margin"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".register.ui.RegisterFragment">
 
@@ -33,7 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/btn_register"
         android:layout_below="@+id/txt_description"
-        android:layout_marginHorizontal="30dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical">
         <EditText
             android:id="@+id/username"
@@ -41,10 +46,11 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/baseline_person_24"
             android:drawablePadding="15dp"
-            android:hint="Username"
+            android:hint="@string/prompt_email"
             android:importantForAutofill="no"
             android:padding="13dp"
-            android:textSize="21sp" />
+            android:textSize="18sp"
+            android:background="@drawable/custom_edittext"/>
 
         <EditText
             android:id="@+id/email"
@@ -53,10 +59,11 @@
             android:layout_marginTop="15dp"
             android:drawableStart="@drawable/baseline_email_24"
             android:drawablePadding="15dp"
-            android:hint="example@mail.com"
+            android:hint="@string/prompt_email_format"
             android:importantForAutofill="no"
             android:padding="13dp"
-            android:textSize="21sp" />
+            android:textSize="18sp"
+            android:background="@drawable/custom_edittext"/>
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
@@ -65,11 +72,12 @@
             android:layout_marginTop="15dp"
             android:drawableStart="@drawable/baseline_lock_24"
             android:drawablePadding="15dp"
-            android:hint="Password"
+            android:hint="@string/prompt_password"
             android:importantForAutofill="no"
             android:padding="13dp"
-            android:textSize="21sp"
-            android:inputType="textPassword"/>
+            android:textSize="18sp"
+            android:inputType="textPassword"
+            android:background="@drawable/custom_edittext"/>
         <EditText
             android:id="@+id/confirmPassword"
             android:layout_width="match_parent"
@@ -78,14 +86,16 @@
             android:layout_marginTop="15dp"
             android:drawableStart="@drawable/baseline_lock_24"
             android:drawablePadding="15dp"
-            android:hint="Confirm Password"
+            android:hint="@string/prompt_confirm_password"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:padding="13dp"
             android:textColor="#4b784e"
             android:textColorHint="#4b784e"
-            android:textSize="21sp" />
+            android:textSize="18sp"
+            android:background="@drawable/custom_edittext"/>
     </LinearLayout>
+
     <Button
         android:id="@+id/btn_register"
         android:layout_width="match_parent"
@@ -94,16 +104,18 @@
         android:layout_above="@+id/login_option_label"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginBottom="50dp"
-        android:textSize="20dp"
+        android:layout_marginBottom="30dp"
+        android:textSize="18sp"
         android:text="Register"
-        android:backgroundTint="#4b784e"
-        android:padding="13dp" />
+        android:textColor="@color/white_text"
+        android:background="@drawable/custom_button_rounded"
+        android:backgroundTint="#4b784e" />
+
     <LinearLayout
         android:id="@+id/login_option_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal">
@@ -111,7 +123,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Are you a member? "
+        android:text="@string/login_option"
+        android:textColor="@color/faded_text"
+        android:layout_marginRight="10dp"
         android:textSize="20dp" />
     <!--        Wrap with a container for clickable-->
     <LinearLayout
@@ -125,6 +139,7 @@
             android:layout_weight="1"
             android:text="Login"
             android:textSize="20dp"
+            android:textColor="@color/green_primary"
             android:textStyle="bold" />
     </LinearLayout>
     </LinearLayout>

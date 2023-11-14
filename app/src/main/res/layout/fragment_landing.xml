@@ -31,8 +31,10 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginHorizontal="80dp"
-            android:text="@string/action_sign_in"
-            android:layout_above="@+id/btn_landing_register" />
+            android:text="@string/log_in"
+            android:textColor="@color/white_text"
+            android:background="@drawable/custom_button_rounded_faded"
+            android:layout_above="@+id/btn_landing_register"/>
 
         <TextView
             android:id="@+id/btn_landing_register"

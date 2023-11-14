@@ -46,6 +46,7 @@ public class LoginFragment extends Fragment {
             public void onClick(View view) {
                 String username = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
+
                 loginViewModel.login(username, password).observe(getViewLifecycleOwner(), new Observer<AccessTokenResponse>() {
                     @Override
                     public void onChanged(AccessTokenResponse response) {
@@ -63,8 +64,8 @@ public class LoginFragment extends Fragment {
         registerOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Fragment registerFragment = new RegisterFragment();
-               replaceFragment(registerFragment);
+                Fragment registerFragment = new RegisterFragment();
+                replaceFragment(registerFragment);
             }
         });
         return binding.getRoot();
