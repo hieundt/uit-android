@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+<!--    app theme colors-->
+    <color name="green_primary">#49734c</color>
+    <color name="green_secondary">#dde3df</color>
+    <color name="green_faded">#556a5f</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background">#F5F5F5</color>
+
+<!--    status colors-->
     <color name="good">#32CD30</color>
     <color name="average"></color>
-    <color name="light_blue_400">#FF29B6F6</color>
-    <color name="light_blue_600">#FF039BE5</color>
-    <color name="gray_400">#FFBDBDBD</color>
-    <color name="gray_600">#FF757575</color>
-    <color name="neutral6">#FBFDFE</color>
-    <color name="neutral3">#72777A</color>
-    <color name="neutral2">#42494E</color>
-    <color name="neutral1">#242D33</color>
-    <color name="red">#FF0000</color>
-    <color name="primary">#1BBBD1</color>
-    <color name="chart_primary">#CCFFFF</color>
-    <color name="green_1">#008000</color>
+
+<!--    text color-->
+    <color name="white_text">#F5F7F8</color>
+    <color name="faded_text">#A7B0B2</color>
 
 </resources>

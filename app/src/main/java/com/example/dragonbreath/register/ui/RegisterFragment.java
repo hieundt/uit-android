@@ -50,7 +50,6 @@ public class RegisterFragment extends Fragment {
                 String email = emailEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
                 String confirmPassword = confirmPasswordEditText.getText().toString();
-
                 Bundle bundle = new Bundle();
                 bundle.putString("username", username);
                 bundle.putString("email", email);
@@ -59,6 +58,19 @@ public class RegisterFragment extends Fragment {
 
                 loading.putExtra("register", bundle);
                 startActivity(loading);
+//                if (validateRegistration(username,email,password,confirmPassword)) {
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString("username", username);
+//                    bundle.putString("email", email);
+//                    bundle.putString("password", password);
+//                    bundle.putString("confirmPassword", confirmPassword);
+//
+//                    loading.putExtra("register", bundle);
+//                    startActivity(loading);
+//                } else {
+//
+//                }
+
             }
         });
 
@@ -83,6 +95,26 @@ public class RegisterFragment extends Fragment {
                 .replace(R.id.landing_container, fragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    public boolean validateRegistration(String username,String email,String password,String confirm) {
+        return isEmailValid(email) &&
+                isPasswordValid(password, confirm) &&
+                isUsernameValid(username);
+    }
+
+    private boolean isEmailValid(String email) {
+        return email != null && email.contains("@");
+    }
+
+    private boolean isPasswordValid(String password, String confirmPassword) {
+        return password != null && confirmPassword != null &&
+                password.equals(confirmPassword) &&
+                password.length() >= 6;
+    }
+
+    private boolean isUsernameValid(String username) {
+        return username != null;
     }
 }
 

@@ -1,20 +1,26 @@
 <resources>
-    <string name="app_name">Dragon Breath</string>
+    <!-- Strings related to app -->
+    <string name="app_name">Air Sense</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_profile">Profile</string>
-    <string name="title_notifications">Notifications</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email or User name</string>
+    <string name="prompt_email_format">example@gmail.com</string>
     <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in</string>
-    <string name="sign_in_title">Sign in</string>
+    <string name="prompt_confirm_password">Confirm password</string>
+    <string name="log_in">Log in</string>
     <string name="welcome">"Welcome back!"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="login_option">Are you a member?</string>
 
+    <!-- Strings related to register -->
     <string name="register">Register</string>
+    <string name="register_option">First time here?</string>
     <string name="create_your_new_account">Create your new account</string>
 
+    <!-- Strings related to login -->
 </resources>
