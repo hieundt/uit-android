@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.dragonbreath"
+    namespace = "com.example.airsense"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.dragonbreath"
+        applicationId = "com.example.airsense"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -29,6 +29,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    buildToolsVersion = "34.0.0"
 }
 
 dependencies {

@@ -1,26 +1,42 @@
 <resources>
-    <!-- Strings related to app -->
+    <!-- Global strings -->
     <string name="app_name">Air Sense</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_profile">Profile</string>
+    <string name="alert_coming_soon">This feature </string>
+    <string name="status_waiting">Please wait...</string>
 
-    <!-- Strings related to login -->
-    <string name="prompt_email">Email or User name</string>
-    <string name="prompt_email_format">example@gmail.com</string>
+    <!-- Nav bar strings -->
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_explore">Explore</string>
+    <string name="title_account">Account</string>
+
+    <!-- Login screen strings -->
+    <string name="title_login">"Welcome back"</string>
+    <string name="title_login_description">Login to your account</string>
+
+    <string name="prompt_user">User Name</string>
+    <string name="prompt_email_format">user@mail.com</string>
     <string name="prompt_password">Password</string>
     <string name="prompt_confirm_password">Confirm password</string>
-    <string name="log_in">Log in</string>
-    <string name="welcome">"Welcome back!"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
-    <string name="login_option">Are you a member?</string>
+    <string name="prompt_log_in">Login</string>
 
-    <!-- Strings related to register -->
-    <string name="register">Register</string>
-    <string name="register_option">First time here?</string>
-    <string name="create_your_new_account">Create your new account</string>
+    <string name="option_register">Don\'t have account?</string>
 
-    <!-- Strings related to login -->
+    <string name="error_invalid_username">Not a valid username</string>
+    <string name="error_invalid_password">Password must be >5 characters</string>
+    <string name="error_login_failed">"Login failed"</string>
+
+    <!-- Register screen strings -->
+    <string name="title_register_description">Create your new account</string>
+
+    <string name="prompt_register">Register</string>
+    <string name="prompt_forgot_password">Forgot password ?</string>
+
+    <string name="option_login">Already have an account?</string>
+    <string name="option_remember">Remember Me</string>
+    <string name="option_continue_with">Or continue with</string>
+
+    <!-- Landing screen strings -->
+    <string name="title_landing">Let us take care for your health</string>
+    <string name="option_landing">Create an account</string>
+
 </resources>

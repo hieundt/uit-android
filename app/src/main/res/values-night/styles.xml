@@ -1,7 +1,5 @@
 <resources>
-
     <style name="Widget.Theme.AirSense.MyView" parent="">
         <item name="android:background">@color/background</item>
-<!--        <item name="exampleColor">@color/light_blue_600</item>-->
     </style>
 </resources>

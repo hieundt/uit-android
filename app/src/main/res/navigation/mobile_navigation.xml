@@ -3,25 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
-    <fragment
-        android:id="@+id/navigation_login"
-        android:name="com.example.dragonbreath.login.ui.LoginFragment"
-        android:label="@string/log_in"
-        tools:layout="@layout/fragment_login" />
-    <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.dragonbreath.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+    app:startDestination="@+id/navigation_dashboard">
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.dragonbreath.dashboard.DashboardFragment"
+        android:name="com.example.airsense.view.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
     <fragment
-        android:id="@+id/navigation_profile"
-        android:name="com.example.dragonbreath.profile.ui.ProfileFragment"
-        android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile"/>
+        android:id="@+id/navigation_explore"
+        android:name="com.example.airsense.view.explore.ExploreFragment"
+        android:label="@string/title_explore"
+        tools:layout="@layout/fragment_explore" />
+    <fragment
+        android:id="@+id/navigation_account"
+        android:name="com.example.airsense.view.account.AccountFragment"
+        android:label="@string/title_account"
+        tools:layout="@layout/fragment_account"/>
 </navigation>

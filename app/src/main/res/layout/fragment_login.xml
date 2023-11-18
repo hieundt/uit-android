@@ -1,42 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/fragment_horizontal_margin"
     android:paddingTop="@dimen/fragment_vertical_margin"
     android:paddingRight="@dimen/fragment_horizontal_margin"
     android:paddingBottom="@dimen/fragment_vertical_margin"
-    android:background="@drawable/auth_bg"
-    tools:context=".login.ui.LoginFragment">
+    android:background="@drawable/auth_background"
+    tools:context=".view.login.LoginFragment">
 
-    <TextView
-        android:id="@+id/txt_title"
+    <LinearLayout
+        android:id="@+id/txt_login_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="50dp"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="200dp"
-        android:gravity="center"
-        android:text="@string/welcome"
-        android:textColor="#4b784e"
-        android:textSize="40sp"
-        android:textStyle="bold"/>
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/title_login"
+            android:textColor="@color/green_primary"
+            android:textSize="40sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/title_login_description"
+            android:textColor="@color/faded_text"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_title"
+        android:layout_below="@+id/txt_login_title"
         android:orientation="vertical">
-
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/edit_login_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/baseline_email_24"
+        android:drawableStart="@drawable/auth_ic_email"
         android:drawablePadding="15dp"
-        android:hint="@string/prompt_email"
+        android:hint="@string/prompt_user"
         android:inputType="textEmailAddress"
         android:importantForAutofill="no"
         android:selectAllOnFocus="true"
@@ -45,10 +58,10 @@
         android:background="@drawable/custom_edittext"/>
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/edit_login_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/baseline_lock_24"
+        android:drawableStart="@drawable/auth_ic_lock"
         android:layout_marginTop="15dp"
         android:drawablePadding="15dp"
         android:hint="@string/prompt_password"
@@ -65,39 +78,38 @@
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/register_option_label"
+        android:layout_above="@+id/lable_option_register"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
         android:enabled="true"
-        android:text="@string/log_in"
+        android:text="@string/prompt_log_in"
         android:textSize="18sp"
         android:backgroundTint="#4b784e"
         android:textColor="@color/white_text"
         android:layout_centerHorizontal="true"
         android:background="@drawable/custom_button_rounded"/>
 
-
-
-
     <LinearLayout
-        android:id="@+id/register_option_label"
+        android:id="@+id/lable_option_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="20dp"
         android:orientation="horizontal">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/register_option"
+        android:text="@string/option_register"
         android:layout_marginRight="10dp"
         android:textColor="@color/faded_text"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
     <LinearLayout
-        android:id="@+id/register_option"
+        android:id="@+id/txt_btn_option_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true">
@@ -105,10 +117,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Register"
+            android:text="@string/prompt_register"
             android:textSize="20dp"
             android:textColor="@color/green_primary"
             android:textStyle="bold" />
     </LinearLayout>
+
     </LinearLayout>
 </RelativeLayout>

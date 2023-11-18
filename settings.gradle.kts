@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Dragon Breath"
+rootProject.name = "Air Sense"
 include(":app")
