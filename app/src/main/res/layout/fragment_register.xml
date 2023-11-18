@@ -1,76 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/fragment_horizontal_margin"
     android:paddingTop="@dimen/fragment_vertical_margin"
     android:paddingRight="@dimen/fragment_horizontal_margin"
     android:paddingBottom="@dimen/fragment_vertical_margin"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".register.ui.RegisterFragment">
+    android:background="@drawable/auth_background"
+    tools:context=".view.register.RegisterFragment">
 
-    <TextView
-        android:id="@+id/txt_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/register"
-        android:gravity="center"
-        android:textColor="#4b784e"
-        android:textSize="40sp"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/txt_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_title"
-        android:layout_marginBottom="30dp"
-        android:gravity="center"
-        android:text="@string/create_your_new_account"
-        android:textSize="20sp" />
+   <LinearLayout
+       android:id="@+id/txt_register_title"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="10dp"
+       android:orientation="vertical">
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_alignParentTop="true"
+           android:layout_marginTop="10dp"
+           android:layout_marginBottom="10dp"
+           android:gravity="center"
+           android:text="@string/prompt_register"
+           android:textColor="@color/green_primary"
+           android:textSize="40sp"
+           android:textStyle="bold"/>
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/txt_title"
+           android:layout_marginBottom="30dp"
+           android:gravity="center"
+           android:text="@string/title_register_description"
+           android:textColor="@color/faded_text"
+           android:textSize="20sp"
+           android:textStyle="bold"/>
+   </LinearLayout>
 
     <LinearLayout
+        android:layout_below="@+id/txt_register_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_register"
-        android:layout_below="@+id/txt_description"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="70dp"
         android:orientation="vertical">
+
         <EditText
-            android:id="@+id/username"
+            android:id="@+id/edit_register_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/baseline_person_24"
+            android:drawableStart="@drawable/auth_ic_person"
             android:drawablePadding="15dp"
-            android:hint="@string/prompt_email"
+            android:hint="@string/prompt_user"
             android:importantForAutofill="no"
             android:padding="13dp"
             android:textSize="18sp"
             android:background="@drawable/custom_edittext"/>
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/edit_register_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:drawableStart="@drawable/baseline_email_24"
+            android:drawableStart="@drawable/auth_ic_email"
             android:drawablePadding="15dp"
             android:hint="@string/prompt_email_format"
             android:importantForAutofill="no"
             android:padding="13dp"
             android:textSize="18sp"
             android:background="@drawable/custom_edittext"/>
+
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/edit_register_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/mail"
             android:layout_marginTop="15dp"
-            android:drawableStart="@drawable/baseline_lock_24"
+            android:drawableStart="@drawable/auth_ic_lock"
             android:drawablePadding="15dp"
             android:hint="@string/prompt_password"
             android:importantForAutofill="no"
@@ -78,13 +85,14 @@
             android:textSize="18sp"
             android:inputType="textPassword"
             android:background="@drawable/custom_edittext"/>
+
         <EditText
-            android:id="@+id/confirmPassword"
+            android:id="@+id/edit_register_confirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/pass"
             android:layout_marginTop="15dp"
-            android:drawableStart="@drawable/baseline_lock_24"
+            android:drawableStart="@drawable/auth_ic_lock"
             android:drawablePadding="15dp"
             android:hint="@string/prompt_confirm_password"
             android:importantForAutofill="no"
@@ -101,48 +109,48 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/login_option_label"
+        android:layout_above="@+id/label_option_login"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
         android:textSize="18sp"
-        android:text="Register"
+        android:text="@string/prompt_register"
         android:textColor="@color/white_text"
         android:background="@drawable/custom_button_rounded"
         android:backgroundTint="#4b784e" />
 
     <LinearLayout
-        android:id="@+id/login_option_label"
+        android:id="@+id/label_option_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="20dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/login_option"
-        android:textColor="@color/faded_text"
-        android:layout_marginRight="10dp"
-        android:textSize="20dp" />
-    <!--        Wrap with a container for clickable-->
-    <LinearLayout
-        android:id="@+id/login_option"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true">
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Login"
+            android:text="@string/option_login"
+            android:textColor="@color/faded_text"
+            android:layout_marginRight="10dp"
             android:textSize="20dp"
-            android:textColor="@color/green_primary"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
+    <!--        Wrap with a container for clickable-->
+        <LinearLayout
+            android:id="@+id/txt_btn_option_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Login"
+                    android:textSize="20dp"
+                    android:textColor="@color/green_primary"
+                    android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
-    </LinearLayout>
-
 </RelativeLayout>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<!--    app theme colors-->
+    <!--    app theme colors-->
     <color name="green_primary">#49734c</color>
     <color name="green_secondary">#dde3df</color>
     <color name="green_faded">#556a5f</color>
@@ -8,11 +8,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="background">#F5F5F5</color>
 
-<!--    status colors-->
+    <!--    status colors-->
     <color name="good">#32CD30</color>
     <color name="average"></color>
 
-<!--    text color-->
+    <!--    text color-->
     <color name="white_text">#F5F7F8</color>
     <color name="faded_text">#A7B0B2</color>
 

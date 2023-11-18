@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/home_svgrepo_com"
-        android:title="@string/title_home" />
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/nav_ic_dashboard"
+        android:title="@string/title_dashboard" />
     <item
-        android:id="@+id/navigation_device"
-        android:icon="@drawable/device_activating_svgrepo_com"
-        android:title="Device" />
+        android:id="@+id/navigation_explore"
+        android:icon="@drawable/nav_ic_explore"
+        android:title="@string/title_explore" />
     <item
-        android:id="@+id/navigation_map"
-        android:icon="@drawable/map_svgrepo_com"
-        android:title="Map" />
-    <item
-        android:id="@+id/navigation_profile"
-        android:icon="@drawable/profile_svgrepo_com"
-        android:title="@string/title_profile"/>
+        android:id="@+id/navigation_account"
+        android:icon="@drawable/nav_ic_account"
+        android:title="@string/title_account"/>
 </menu>

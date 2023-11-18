@@ -5,48 +5,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LandingFragment">
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:scaleType="centerCrop"
-            android:layout_alignParentTop="true"
-            android:src="@drawable/landing_bg"/>
+
+    <ImageView
+        android:id="@+id/img_landing_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:scaleType="centerCrop"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/landing_background"/>
+
+    <TextView
+        android:id="@+id/txt_landing_title"
+        android:layout_alignParentTop="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:paddingHorizontal="30dp"
+        android:textColor="@color/white_text"
+        android:textStyle="bold"
+        android:textSize="62dp"
+        android:text="@string/title_landing"/>
+
+    <Button
+        android:id="@+id/btn_landing_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="80dp"
+        android:text="@string/prompt_log_in"
+        android:textColor="@color/white_text"
+        android:background="@drawable/custom_button_rounded_faded"
+        android:layout_above="@+id/txt_btn_landing_register"/>
+
+
+    <LinearLayout
+        android:id="@+id/txt_btn_landing_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="200dp"
+        android:layout_marginTop="20dp"
+        android:clickable="true">
         <TextView
-            android:id="@+id/landing_title"
-            android:layout_alignParentTop="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:paddingHorizontal="30dp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="62dp"
-            android:text="The best app for your health"/>
-
-        <Button
-            android:id="@+id/btn_landing_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginHorizontal="80dp"
-            android:text="@string/log_in"
-            android:textColor="@color/white_text"
-            android:background="@drawable/custom_button_rounded_faded"
-            android:layout_above="@+id/btn_landing_register"/>
-
-        <TextView
-            android:id="@+id/btn_landing_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="200dp"
-            android:clickable="true"
-            android:text="Create an account"
+            android:text="@string/option_landing"
             android:textSize="20dp"
-            android:textColor="@color/white"
+            android:textColor="@color/white_text"
             android:textStyle="bold" />
+    </LinearLayout>
 </RelativeLayout>
