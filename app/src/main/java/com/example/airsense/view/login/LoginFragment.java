@@ -4,10 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,19 +14,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-import com.example.airsense.LocalStorage;
 import com.example.airsense.MainActivity;
 import com.example.airsense.R;
+import com.example.airsense.data.apiclient.TokenManager;
 import com.example.airsense.databinding.FragmentLoginBinding;
-import com.example.airsense.domain.model.AccessTokenResponse;
+import com.example.airsense.domain.model.TokenResponse;
 import com.example.airsense.view.register.RegisterFragment;
 
 public class LoginFragment extends Fragment {
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
+    private TokenManager tokenManager;
     private Intent navToMain;
     private FragmentLoginBinding binding;
-    private LoginViewModel loginViewModel;
+    private LoginRepository loginRepository;
     private Button loginBtn;
     private LinearLayout registerOption;
     private EditText usernameEditText, passwordEditText;
@@ -44,12 +41,16 @@ public class LoginFragment extends Fragment {
             public void onClick(View view) {
                 String username = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
-                loginViewModel.login(username, password).observe(getViewLifecycleOwner(), new Observer<AccessTokenResponse>() {
+                loginRepository.login(username, password).observe(getViewLifecycleOwner(), new Observer<TokenResponse>() {
                     @Override
-                    public void onChanged(AccessTokenResponse response) {
+                    public void onChanged(TokenResponse response) {
                         if (response != null) {
-                            editor.putString("access_token", response.accessToken);
-                            editor.apply();
+                            tokenManager.login(
+                                    response.accessToken,
+                                    response.refreshToken,
+                                    response.expiresIn,
+                                    response.refreshExpiresIn
+                            );
                             startActivity(navToMain);
                         } else {
                         }
@@ -74,10 +75,9 @@ public class LoginFragment extends Fragment {
     }
 
     private void initiate(FragmentLoginBinding binding) {
-        sharedPreferences = LocalStorage.getInstance(getContext());
-        editor = sharedPreferences.edit();
+        tokenManager = TokenManager.getInstance(getContext());
         navToMain = new Intent(getActivity(), MainActivity.class);
-        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+        loginRepository = new LoginRepository(getContext());
         loginBtn = binding.btnLogin;
         registerOption = binding.txtBtnOptionRegister;
         usernameEditText = binding.editLoginUsername;

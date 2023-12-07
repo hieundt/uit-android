@@ -1,20 +1,23 @@
 package com.example.airsense.view.dashboard;
 
+import android.content.Context;
+
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.airsense.domain.model.AssetModel.WeatherAsset;
+import com.example.airsense.view.home.WeatherAssetRepository;
+
+import java.util.List;
+
 public class DashboardViewModel extends ViewModel {
+    private  LiveData<List<WeatherAsset>> weatherAssets;
 
-    private final MutableLiveData<String> mText;
-
-    public DashboardViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+    public DashboardViewModel(WeatherAssetRepository weatherAssetRepository) {
+        weatherAssets = weatherAssetRepository.getAsset();
     }
 
-
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<List<WeatherAsset>> getData() {
+        return weatherAssets;
     }
 }

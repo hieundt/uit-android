@@ -5,26 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--        android:id="@+id/botNav"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_marginBottom="0dp"-->
-<!--<<<<<<< HEAD-->
-<!--        app:itemBackground="@color/background"-->
-<!--=======-->
-<!--        app:itemBackground="@color/neutral6"-->
-<!--&gt;>>>>>> name_update-->
-<!--        app:itemIconTint="@color/color_nav"-->
-<!--        app:itemTextColor="@color/color_nav"-->
-<!--        app:menu="@menu/bottom_nav_menu" />-->
-
-<!--    <FrameLayout-->
-<!--        android:id="@+id/frameLayout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_above="@id/botNav" />-->
+    android:paddingHorizontal="10dp"
+    tools:context=".view.dashboard.DashboardFragment">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dashboard_rec_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true">
+    </androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>

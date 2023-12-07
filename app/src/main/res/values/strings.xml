@@ -5,8 +5,8 @@
     <string name="status_waiting">Please wait...</string>
 
     <!-- Nav bar strings -->
+    <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_explore">Explore</string>
     <string name="title_account">Account</string>
 
     <!-- Login screen strings -->
@@ -38,5 +38,12 @@
     <!-- Landing screen strings -->
     <string name="title_landing">Let us take care for your health</string>
     <string name="option_landing">Create an account</string>
+
+    <!-- Default string for null response -->
+    <string name="default_place">UIT</string>
+    <string name="default_location">Thu Duc, Ho Chi Minh City</string>
+
+    <string name="good_weather_status">GOOD</string>
+    <string name="bad_weather_status">BAD</string>
 
 </resources>

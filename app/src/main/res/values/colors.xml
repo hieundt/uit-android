@@ -7,13 +7,16 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background">#F5F5F5</color>
+    
+    <color name="silver">#E8E8E8</color>
 
     <!--    status colors-->
-    <color name="good">#32CD30</color>
-    <color name="average"></color>
+    <color name="good">#B0D9B1</color>
+    <color name="bad">#DF9166</color>
 
     <!--    text color-->
     <color name="white_text">#F5F7F8</color>
     <color name="faded_text">#A7B0B2</color>
+    <color name="weather_status_text">#464646</color>
 
 </resources>

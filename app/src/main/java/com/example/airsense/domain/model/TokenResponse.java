@@ -2,7 +2,7 @@ package com.example.airsense.domain.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class AccessTokenResponse {
+public class TokenResponse {
     @SerializedName("access_token")
     public String accessToken;
     @SerializedName("refresh_token")

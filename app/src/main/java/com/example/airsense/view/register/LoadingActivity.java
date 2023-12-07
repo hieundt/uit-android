@@ -15,8 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.airsense.MainActivity;
 import com.example.airsense.data.apiclient.ApiClient;
 import com.example.airsense.databinding.ActivityLoadingBinding;
-import com.example.airsense.domain.model.AccessTokenResponse;
-import com.example.airsense.domain.service.AuthService;
+import com.example.airsense.domain.model.TokenResponse;
+import com.example.airsense.domain.service.TokenService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,7 +24,7 @@ import retrofit2.Response;
 
 public class LoadingActivity extends AppCompatActivity {
     private ActivityLoadingBinding binding;
-    private AuthService authService;
+    private TokenService tokenService;
     private WebView webView;
     private ProgressBar progressBar;
     private String username;
@@ -94,7 +94,7 @@ public class LoadingActivity extends AppCompatActivity {
     private void initiate()
     {
         CookieManager.getInstance().removeAllCookies(null);
-        authService = ApiClient.getClient().create(AuthService.class);
+        tokenService = ApiClient.getClient(this).create(TokenService.class);
         webView = new WebView(getBaseContext());
         progressBar = binding.progressBar;
 
@@ -108,10 +108,10 @@ public class LoadingActivity extends AppCompatActivity {
 
     private void navigateToMain()
     {
-        Call<AccessTokenResponse> call = authService.login("openremote", "password", username, password);
-        call.enqueue(new Callback<AccessTokenResponse>() {
+        Call<TokenResponse> call = tokenService.getToken("openremote", "password", username, password);
+        call.enqueue(new Callback<TokenResponse>() {
             @Override
-            public void onResponse(Call<AccessTokenResponse> call, Response<AccessTokenResponse> response) {
+            public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
                 if (response.isSuccessful()) {
                     Intent navToMain = new Intent(LoadingActivity.this, MainActivity.class);
                     startActivity(navToMain);
@@ -120,7 +120,7 @@ public class LoadingActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<AccessTokenResponse> call, Throwable t) {
+            public void onFailure(Call<TokenResponse> call, Throwable t) {
                 // Handle network errors
             }
         });
