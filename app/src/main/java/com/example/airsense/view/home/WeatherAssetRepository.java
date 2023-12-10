@@ -27,12 +27,11 @@ public class WeatherAssetRepository {
         assetService = ApiClient.getClient(context).create(WeatherAssetService.class);
     }
 
-    // Create the request body
+    //List of Weather Asset
     String[] types = {"WeatherAsset"};
     WeatherAssetRequestBody requestBody = new WeatherAssetRequestBody(types);
     public LiveData<List<WeatherAsset>> getAsset() {
         MutableLiveData<List<WeatherAsset>> data = new MutableLiveData<>();
-
         Call<List<WeatherAsset>> call = assetService.getAsset(requestBody);
         call.enqueue(new Callback<List<WeatherAsset>>() {
             @Override
@@ -43,9 +42,30 @@ public class WeatherAssetRepository {
                     Log.e("API CALL", "Request failed with code: " + response.code());
                 }
             }
-
             @Override
             public void onFailure(Call<List<WeatherAsset>> call, Throwable t) {
+                // Handle network error
+                Log.e("API CALL", "Request failed with code: " +  t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    //Weather Asset by Id
+    public LiveData<WeatherAsset> getAssetById(String assetId) {
+        MutableLiveData<WeatherAsset> data = new MutableLiveData<>();
+        Call<WeatherAsset> call = assetService.getAssetById(assetId);
+        call.enqueue(new Callback<WeatherAsset>() {
+            @Override
+            public void onResponse(Call<WeatherAsset> call, Response<WeatherAsset> response) {
+                if (response.isSuccessful()) {
+                    data.setValue(response.body());
+                } else  {
+                    Log.e("API CALL", "Request failed with code: " + response.code());
+                }
+            }
+            @Override
+            public void onFailure(Call<WeatherAsset> call, Throwable t) {
                 // Handle network error
                 Log.e("API CALL", "Request failed with code: " +  t.getMessage());
             }

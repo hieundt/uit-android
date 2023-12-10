@@ -31,40 +31,44 @@ public class WeatherAsset {
         public Measurement sunIrradiance;
         @SerializedName("rainfall")
         public Measurement rainfall;
-        @SerializedName("notes")
-        public Measurement notes;
         @SerializedName("uVIndex")
         public Measurement uVIndex;
         @SerializedName("sunAzimuth")
         public Measurement sunAzimuth;
         @SerializedName("sunZenith")
         public Measurement sunZenith;
-        @SerializedName("tags")
-        public Measurement tags;
-        @SerializedName("manufacturer")
-        public Measurement manufacturer;
         @SerializedName("temperature")
         public Measurement temperature;
         @SerializedName("humidity")
         public Measurement humidity;
-        @SerializedName("location")
-        public Location location;
-        @SerializedName("place")
-        public Measurement place;
         @SerializedName("windDirection")
         public Measurement windDirection;
         @SerializedName("windSpeed")
         public Measurement windSpeed;
         @SerializedName("sunAltitude")
         public Measurement sunAltitude;
+
         @SerializedName("PM25")
-        public Measurement pm25;
+        public Pollutant pm25;
+        @SerializedName("PM10")
+        public Pollutant pm10;
         @SerializedName("CO2")
-        public Measurement co2;
+        public Pollutant co2;
         @SerializedName("AQI_Predict")
-        public Measurement aqiPredict;
+        public Pollutant aqiPredict;
         @SerializedName("AQI")
-        public Measurement aqi;
+        public Pollutant aqi;
+        @SerializedName("SO2")
+        public Pollutant so2;
+        @SerializedName("NO2")
+        public Pollutant no2;
+        @SerializedName("CO2_average")
+        public Pollutant co2Average;
+
+        @SerializedName("location")
+        public Location location;
+        @SerializedName("place")
+        public Place place;
 
         public static class Measurement {
             @SerializedName("type")
@@ -76,7 +80,26 @@ public class WeatherAsset {
             @SerializedName("timestamp")
             public long timestamp;
         }
-
+        public static class Pollutant {
+            @SerializedName("type")
+            public String type;
+            @SerializedName("value")
+            public Object value;
+            @SerializedName("name")
+            public String name;
+            @SerializedName("timestamp")
+            public long timestamp;
+        }
+        public static class Place {
+            @SerializedName("type")
+            public String type;
+            @SerializedName("value")
+            public Object value;
+            @SerializedName("name")
+            public String name;
+            @SerializedName("timestamp")
+            public long timestamp;
+        }
     }
 
     public static class Location {

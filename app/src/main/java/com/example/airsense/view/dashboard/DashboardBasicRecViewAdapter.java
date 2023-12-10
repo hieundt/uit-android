@@ -1,17 +1,23 @@
 package com.example.airsense.view.dashboard;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.airsense.R;
@@ -20,10 +26,10 @@ import com.example.airsense.domain.model.AssetModel.WeatherAsset;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DashboardRecViewAdapter extends RecyclerView.Adapter<DashboardRecViewAdapter.BasicWeatherViewHolder> {
+public class DashboardBasicRecViewAdapter extends RecyclerView.Adapter<DashboardBasicRecViewAdapter.BasicWeatherViewHolder> {
     private Context context;
     private List<WeatherAsset> weatherAssets = new ArrayList<>();
-    public DashboardRecViewAdapter(Context context) {this.context = context;}
+    public DashboardBasicRecViewAdapter(Context context) {this.context = context;}
 
     @NonNull
     @Override
@@ -42,19 +48,32 @@ public class DashboardRecViewAdapter extends RecyclerView.Adapter<DashboardRecVi
             holder.pollutantText.setText(assetAttribute.pm25.value.toString());
         }
         if(assetAttribute.aqi != null) {
-            if( 1 < 50 ) {
+             Double aqiValue = (Double)assetAttribute.aqi.value ;
+            if( aqiValue < 50 ) {
                 holder.qualityText.setText(R.string.good_weather_status);
-                holder.qualityText.setBackgroundColor(ContextCompat.getColor(context, R.color.good));
+                holder.healthImage.setImageResource(R.drawable.weather_good);
+                holder.healthImageContainer.setBackgroundResource(R.drawable.custom_weather_good);
+                holder.qualityText.setBackgroundResource(R.drawable.custom_weather_good);
             } else  {
                 holder.qualityText.setText(R.string.bad_weather_status);
-                holder.qualityText.setBackgroundColor(ContextCompat.getColor(context, R.color.bad));
+                holder.healthImage.setImageResource(R.drawable.weather_bad);
+                holder.healthImageContainer.setBackgroundResource(R.drawable.custom_weather_bad);
+                holder.qualityText.setBackgroundResource(R.drawable.custom_weather_bad);
             }
         }
 
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context,weatherAssets.get(holder.getAdapterPosition()).name,Toast.LENGTH_SHORT).show();
+               // FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
+                DashBoardDetailFragment dashBoardDetailFragment = new DashBoardDetailFragment();
+                Bundle bundle = new Bundle();
+                if (weatherAssets.get(position) != null) {
+                    String id = weatherAssets.get(position).id;
+                    bundle.putString("assetId", id);
+                    dashBoardDetailFragment.setArguments(bundle);
+                    Navigation.createNavigateOnClickListener(R.id.action_basic_to_detail,bundle).onClick(holder.itemView);
+                }
             }
         });
     }
@@ -64,6 +83,7 @@ public class DashboardRecViewAdapter extends RecyclerView.Adapter<DashboardRecVi
         return weatherAssets.size();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setWeatherAssets(List<WeatherAsset> weatherAssets) {
         this.weatherAssets = weatherAssets;
         notifyDataSetChanged();
@@ -85,4 +105,5 @@ public class DashboardRecViewAdapter extends RecyclerView.Adapter<DashboardRecVi
             healthImageContainer = itemView.findViewById(R.id.container_health_status);
         }
     }
+
 }

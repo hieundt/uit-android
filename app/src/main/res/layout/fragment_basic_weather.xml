@@ -19,12 +19,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:padding="15dp"
-            android:background="@drawable/custom_rounded_shape">
+            android:background="@drawable/custom_weather_bad">
             <ImageView
                 android:id="@+id/img_health_status"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:src="@drawable/weather_good"/>
+                android:src="@drawable/weather_bad"/>
         </LinearLayout>
 
         <!-- Place status -->
@@ -67,7 +67,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="\u00B5g/m\u00B3"
+                        android:text="@string/PM25"
                         android:textColor="@color/faded_text"
                         android:textSize="16dp"
                         android:textStyle="bold" />
@@ -83,8 +83,8 @@
             android:layout_alignParentEnd="true"
             android:paddingHorizontal="10dp"
             android:paddingVertical="5dp"
-            android:background="@drawable/custom_rounded_shape"
-            android:text="@string/good_weather_status"
+            android:background="@drawable/custom_weather_bad"
+            android:text="@string/bad_weather_status"
             android:textColor="@color/white"
             android:textSize="16dp"/>
     </RelativeLayout>
