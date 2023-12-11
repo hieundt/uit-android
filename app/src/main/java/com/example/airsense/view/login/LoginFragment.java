@@ -52,7 +52,6 @@ public class LoginFragment extends Fragment {
                                     response.refreshExpiresIn
                             );
                             startActivity(navToMain);
-                        } else {
                         }
                     }
                 });
