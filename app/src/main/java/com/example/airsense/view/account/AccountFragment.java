@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.airsense.LandingActivity;
+import com.example.airsense.R;
 import com.example.airsense.data.apiclient.TokenManager;
 import com.example.airsense.databinding.FragmentAccountBinding;
 
@@ -25,23 +28,19 @@ public class AccountFragment extends Fragment {
 
     private TokenManager tokenManager;
     private AccountViewModel accountViewModel;
-    private  FragmentTransaction transaction;
     private FragmentAccountBinding binding;
-    private TextView fakeProfile;
-    private Button logoutBtn;
+    private RelativeLayout logoutBtn;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentAccountBinding.inflate(inflater,container,false);
         initiate(binding);
-        fakeProfile = binding.fake;
         logoutBtn = binding.btnLogout;
 
         Intent intent = new Intent(getActivity(), LandingActivity.class);
 
         String token = tokenManager.getAccessToken();
-        fakeProfile.setText(token.toString());
 
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,8 +63,11 @@ public class AccountFragment extends Fragment {
     }
 
     private void showLogoutDialog(Context context,Intent intent) {
+        View dialogView = LayoutInflater.from(context).inflate(R.layout.custom_dialog, null);
+
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context)
                 .setTitle("Logout")
+                .setView(dialogView) // Set the custom layout
                 .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
                         tokenManager.logout();
@@ -76,7 +78,13 @@ public class AccountFragment extends Fragment {
                     public void onClick(DialogInterface arg0, int arg1) {
                     }
                 });
-        alertDialog.show();
-        alertDialog.setCancelable(false);
+
+        AlertDialog dialog = alertDialog.create();
+
+        dialog.getWindow().setBackgroundDrawableResource(R.drawable.custom_flat_shape);
+        dialog.show();
+        dialog.setCancelable(false);
     }
+
+
 }

@@ -2,7 +2,6 @@ package com.example.airsense.view.home;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
@@ -12,11 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.airsense.R;
+import com.example.airsense.domain.model.AssetModel.LightAsset;
 import com.example.airsense.domain.model.AssetModel.WeatherAsset;
-import com.example.airsense.view.dashboard.DashBoardDetailViewModel;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -24,13 +22,19 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class HomeFragment extends Fragment {
-    // private DashBoardDetailViewModel viewModel;
+    private double weatherLatitude, weatherLongitude;
+    private double lightLatitude, lightLongitude;
+
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
         @Override
         public void onMapReady(GoogleMap googleMap) {
-            LatLng defaultCenter = new LatLng(10.87, 106.80324);
-            googleMap.addMarker(new MarkerOptions().position(defaultCenter ).title("Marker in Sydney"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(defaultCenter ));
+            LatLng weatherMarker = new LatLng(weatherLatitude, weatherLongitude);
+            googleMap.addMarker(new MarkerOptions().position(weatherMarker ).title("Weather Asset"));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(weatherMarker));
+
+            LatLng lightMarker = new LatLng(lightLatitude, lightLongitude);
+            googleMap.addMarker(new MarkerOptions().position(lightMarker).title("Light Asset"));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(lightMarker));
 
             // Set the bounds
             LatLngBounds bounds = new LatLngBounds(
@@ -39,28 +43,14 @@ public class HomeFragment extends Fragment {
             );
             googleMap.setLatLngBoundsForCameraTarget(bounds);
 
-   //         viewModel.getData().observe(getViewLifecycleOwner(), new Observer<WeatherAsset>() {
-  //              @Override
- //               public void onChanged(WeatherAsset weatherAsset) {
-//                    if(weatherAsset != null && weatherAsset.attributes.location.value != null) {
-//                        double latitude = weatherAsset.attributes.location.value.coordinates.get(1);
-//                        double longitude = weatherAsset.attributes.location.value.coordinates.get(0);
-//
-//                        LatLng locationLatLng = new LatLng(latitude, longitude);
-//                        googleMap.addMarker(new MarkerOptions().position(locationLatLng).title("Weather Location"));
-//                        googleMap.moveCamera(CameraUpdateFactory.newLatLng(locationLatLng));
-//                    }
-  //              }
-  //          });
-
-
             // Set the default zoom level
-            float defaultZoom = 16.0f;
+            float defaultZoom = 15.0f;
             googleMap.moveCamera(CameraUpdateFactory.zoomTo(defaultZoom));
 
             // Set min and max zoom levels
             googleMap.setMinZoomPreference(0);
             googleMap.setMaxZoomPreference(19);
+
         }
     };
 
@@ -69,12 +59,14 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        initiate();
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         if (mapFragment != null) {
@@ -83,8 +75,25 @@ public class HomeFragment extends Fragment {
     }
 
     private void initiate() {
-      //  WeatherAssetRepository weatherAssetRepository = new WeatherAssetRepository(getContext());
-      //  viewModel = new DashBoardDetailViewModel("5zI6XqkQVSfdgOrZ1MyWEf", weatherAssetRepository);
+        WeatherAssetRepository repository = new WeatherAssetRepository(getContext());
+        repository.getAssetById("5zI6XqkQVSfdgOrZ1MyWEf").observe(getViewLifecycleOwner(), new Observer<WeatherAsset>() {
+            @Override
+            public void onChanged(WeatherAsset weatherAsset) {
+                if(weatherAsset.attributes.location.value != null) {
+                    weatherLongitude = weatherAsset.attributes.location.value.coordinates.get(0);
+                    weatherLatitude = weatherAsset.attributes.location.value.coordinates.get(1);
+                }
+            }
+        });
 
+        repository.getLightAssetById("6iWtSbgqMQsVq8RPkJJ9vo").observe(getViewLifecycleOwner(), new Observer<LightAsset>() {
+            @Override
+            public void onChanged(LightAsset lightAsset) {
+                if(lightAsset.attributes.location.value != null) {
+                    lightLongitude = lightAsset.attributes.location.value.coordinates.get(0);
+                    lightLatitude = lightAsset.attributes.location.value.coordinates.get(1);
+                }
+            }
+        });
     }
 }

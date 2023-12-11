@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.airsense.data.apiclient.ApiClient;
+import com.example.airsense.domain.model.AssetModel.LightAsset;
 import com.example.airsense.domain.model.AssetModel.WeatherAsset;
 import com.example.airsense.domain.model.TokenResponse;
 import com.example.airsense.domain.service.WeatherAssetRequestBody;
@@ -66,6 +67,28 @@ public class WeatherAssetRepository {
             }
             @Override
             public void onFailure(Call<WeatherAsset> call, Throwable t) {
+                // Handle network error
+                Log.e("API CALL", "Request failed with code: " +  t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    //Light Asset by Id
+    public LiveData<LightAsset> getLightAssetById(String assetId) {
+        MutableLiveData<LightAsset> data = new MutableLiveData<>();
+        Call<LightAsset> call = assetService.getLightAssetById(assetId);
+        call.enqueue(new Callback<LightAsset>() {
+            @Override
+            public void onResponse(Call<LightAsset> call, Response<LightAsset> response) {
+                if (response.isSuccessful()) {
+                    data.setValue(response.body());
+                } else  {
+                    Log.e("API CALL", "Request failed with code: " + response.code());
+                }
+            }
+            @Override
+            public void onFailure(Call<LightAsset> call, Throwable t) {
                 // Handle network error
                 Log.e("API CALL", "Request failed with code: " +  t.getMessage());
             }
