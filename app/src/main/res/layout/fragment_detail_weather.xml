@@ -13,12 +13,12 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
-            android:id="@+id/container_weather_status"
-            android:layout_width="20dp"
-            android:layout_height="match_parent"
-            android:background="@color/bad"
-            android:orientation="vertical"/>
+<!--        <LinearLayout-->
+<!--            android:id="@+id/container_weather_status"-->
+<!--            android:layout_width="20dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="@color/bad"-->
+<!--            android:orientation="vertical"/>-->
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="match_parent"

@@ -69,13 +69,13 @@ public class DashBoardWeatherRecViewAdapter extends RecyclerView.Adapter<DashBoa
 
     public class DetailWeatherViewHolder extends RecyclerView.ViewHolder {
         private CardView parent;
-        private LinearLayout statusContainer;
+        //private LinearLayout statusContainer;
         private ImageView weatherImage;
         private TextView weatherName, weatherValue, weatherUnit;
         public DetailWeatherViewHolder(@NonNull View itemView) {
             super(itemView);
             parent = itemView.findViewById(R.id.detail_weather_card);
-            statusContainer = itemView.findViewById(R.id.container_weather_status);
+            //statusContainer = itemView.findViewById(R.id.container_weather_status);
             weatherImage = itemView.findViewById(R.id.img_detail_weather);
             weatherName = itemView.findViewById(R.id.txt_weather_name) ;
             weatherValue = itemView.findViewById(R.id.txt_weather_value);

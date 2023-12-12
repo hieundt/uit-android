@@ -61,12 +61,12 @@ public class DashBoardPollutantRecViewAdapter extends RecyclerView.Adapter<DashB
 
     public class DetailPollutantViewHolder extends RecyclerView.ViewHolder {
         private CardView parent;
-        private LinearLayout statusContainer;
+       // private LinearLayout statusContainer;
         private TextView name, value, unit;
         public DetailPollutantViewHolder(@NonNull View itemView) {
             super(itemView);
             parent = itemView.findViewById(R.id.detail_pollutant_card);
-            statusContainer = itemView.findViewById(R.id.container_pollutant_status);
+            //statusContainer = itemView.findViewById(R.id.container_pollutant_status);
             name = itemView.findViewById(R.id.txt_pollutant_name) ;
             value = itemView.findViewById(R.id.txt_pollutant_value);
             unit = itemView.findViewById(R.id.pollutant_unit);
